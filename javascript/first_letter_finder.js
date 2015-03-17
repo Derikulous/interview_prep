@@ -1,5 +1,4 @@
 var fs = require('fs');
-// var array = ["Chris", "NotChris", "", " ", "?", "Your Mom", " fuck"]
 var array = fs.readFileSync("/usr/share/dict/words", "utf8").split("\n")
 var displayArray = ["A", "C", "N", "S"]
 var countArray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];

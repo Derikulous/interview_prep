@@ -14,7 +14,7 @@ public class Main {
 
       System.out.print("Enter a last name: ");
       String lastName = user_input.next();
-      // concatenate first and last name
+// concatenate first and last name
       String fullName = firstName + " " + lastName;
 
       if(!nameAlreadyExists(fullName, peopleArray)){

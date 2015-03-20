@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> jQuery Dropdown menu</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div class="menu-header">
+    <ul>
+      <li class="#menu"><a class="dropdown" href="#">Menu</a></li>
+      <li class="sublinks">
+        <a href="www.imgur.com">Subitem 1</a>
+        <a href="www.imgur.com">Subitem 2</a>
+        <a href="www.imgur.com">Subitem 3</a>
+        <a href="www.imgur.com">Subitem 4</a>
+        <a href="www.imgur.com">Subitem 5</a>
+        <a href="www.imgur.com">Subitem 6</a>
+      </li>
+    </ul>
+  </div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+ <script>
+  $(function() {
+    $('.dropdown').mouseenter(function(){
+      $('.sublinks').stop(false, true).hide();
+
+      var submenu = $(this).parent().next();
+
+      submenu.stop().slideDown(100);
+
+      submenu.mouseleave(function(){
+        $(this).slideUp(100);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

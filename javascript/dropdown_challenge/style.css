@@ -1,59 +1,53 @@
 .dropdown {
-  font-weight: bold;
-  font-size: 18px;
-  text-align: center;
-}
-
-ul {
-  margin: 0px;
-  padding: 0px;
-  list-style-type: none;
-}
-
-ul li a {
-  font-family: Georgia, serif;
-  color: #000;
+  width: 100px;
   background: #ccc;
-  margin-right: 5px;
-  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+}
+.dropdown h4 {
+  margin: 0;
   padding: 10px;
-  display:block;
-  text-decoration:none;
-  width:100px;
-  height:25px;
-  text-align: center;
-  -webkit-border-radius:5px;
-  -moz-border-radius:5px;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
 }
-
-.sublinks a:hover {
-  color:#fff;
+.sub {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  display: none;
+  position: relative;
+}
+.sub li {
+  list-style: none;
+}
+.sub a {
+  display: block;
+  padding: 10px;
+  color: #000;
+  text-decoration: none;
+}
+.sub a:hover {
   background: #333;
-  display:block;
-  text-align: center;
-  width:100px;
+  color: #fff;
 }
 
-.dropdown:hover {
-  color:#fff;
-  background: #333;
-  display:block;
-  text-align: center;
-  width:100px;
-}
-
-ul li.sublinks a {
+.subofsub {
+  padding: 0;
+  display: none;
+  position: absolute;
+  left: 100px;
+  top:0;
   color: #000;
   background: #ccc;
+}
+
+.subofsub a {
+  padding: 10px ;
   display: block;
-  text-align:center;
-  width:100px;
 }
-
-ul li.sublinks
-{
-  display:none;
+.subofsub a:hover {
+  background: #333;
+  color: #fff;
 }
-
-
-

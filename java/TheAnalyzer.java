@@ -39,16 +39,20 @@ public class Main {
       System.out.print("You've entered dong heaven: L.A. Fitness. Before proceeding, enter the number of dongs you expect to see today: ");
 
       int sizeOfDongArray = numberOfDongs.nextInt();
-      System.out.println("Wonderful, you should expect to see " + sizeOfDongArray + " dongs today");
+      if( sizeOfDongArray > 0){
+        System.out.println("Wonderful, you should expect to see " + sizeOfDongArray + " dongs today");
+        int[] dongArray = new int[sizeOfDongArray];
 
-      int[] dongArray = new int[sizeOfDongArray];
-      System.out.print("Upon arriving in the showers, you cannot help but notice the variation in dong size. What are their individual lengths, in centimeters? ");
-      for (int i = 0; i < dongArray.length; i++) {
-        System.out.print("What is the size of dong " + (i + 1) + " ?");
-        int dongLength = dongScanner.nextInt();
-        dongArray[i] = dongLength;
-      }
+        System.out.print("Upon arriving in the showers, you cannot help but notice the variation in dong size. What are their individual lengths, in centimeters? ");
+          for (int i = 0; i < dongArray.length; i++) {
+            System.out.print("What is the size of dong " + (i + 1) + " ?");
+            int dongLength = dongScanner.nextInt();
+            dongArray[i] = dongLength;
+          }
       return dongArray;
+      } else {
+        System.out.println("Whew. No dongs will be seen today. Go home safely.");
+      }
     }
 
     /**

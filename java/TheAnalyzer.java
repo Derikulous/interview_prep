@@ -39,6 +39,10 @@ public class Main {
       System.out.print("You've entered dong heaven: L.A. Fitness. Before proceeding, enter the number of dongs you expect to see today: ");
 
       int sizeOfDongArray = numberOfDongs.nextInt();
+      if (sizeOfDongArray == 0) {
+        System.out.println("Lucky you.");
+      }
+
       if( sizeOfDongArray > 0){
         System.out.println("Wonderful, you should expect to see " + sizeOfDongArray + " dongs today");
         int[] dongArray = new int[sizeOfDongArray];

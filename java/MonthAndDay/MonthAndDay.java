@@ -15,12 +15,19 @@ public class MonthAndDay {
     private final int day;
 
     public MonthAndDay(int month, int day){
-        this.month = month;
-        this.day = day;
+        this.month = month - 1;
+        this.day = day - 1;
 
-        if(day > DAYS_IN_EACH_MONTH[month]){
-            throw new IllegalArgumentException("Not that many days in month "+ month);
+        if(month < 1 || month > 12){
+            throw new IllegalArgumentException("That is not a valid month. Choose between 1 and 12");
         }
+        if(day > DAYS_IN_EACH_MONTH[month - 1] || day < 1){
+            throw new IllegalArgumentException("Not that many days in month " + month);
+        }
+    }
+
+    public String toString(){
+        return "Month: " + this.month + ", Day: " + this.day;
     }
 
     public MonthAndDay(int totalDaysSinceJan1st){
@@ -28,21 +35,22 @@ public class MonthAndDay {
         int day = totalDaysSinceJan1st;
 
         for(int d : DAYS_IN_EACH_MONTH){
-            if(day < 0){
-                day = -(day);
+            if(day <= 27){
+                break;
+            }
+            // account for when we get to December and receive a negative value for day. Reset back to original day then set back to original month
+            if(monthIterator == 11 && day == 30){
+                day = d - 1;
                 break;
             }
 
-            if(day <= 28){
-                break;
-            }
             monthIterator++;
             day -= d;
+
+
         }
-        this.day = day;
-        this.month = monthIterator;
-        System.out.print("Month: " + this.month + " ");
-        System.out.println("Day: " + this.day);
+        this.day = day + 1;
+        this.month = monthIterator + 1;
     }
 
     /**

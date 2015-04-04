@@ -46,8 +46,6 @@ public class MonthAndDay {
 
             monthIterator++;
             day -= d;
-
-
         }
         this.day = day + 1;
         this.month = monthIterator + 1;
@@ -63,11 +61,11 @@ public class MonthAndDay {
     }
 
     public int getMonth(){
-        return month;
+        return month + 1;
     }
 
     public int getDay(){
-        return day;
+        return day + 1;
     }
 
     /**

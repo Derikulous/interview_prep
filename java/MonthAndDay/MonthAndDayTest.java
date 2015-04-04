@@ -44,23 +44,36 @@ public class MonthAndDayTest {
     @org.junit.Test
     public void testGetMonth() throws Exception {
         MonthAndDay mad = new MonthAndDay(5, 12);
-        assertEquals(4, mad.getMonth());
+        assertEquals(5, mad.getMonth());
     }
 
     @org.junit.Test
     public void testGetDay() throws Exception {
         MonthAndDay mad = new MonthAndDay(5, 12);
-        assertEquals(11, mad.getDay());
+        assertEquals(12, mad.getDay());
     }
 
     @org.junit.Test
     public void testComputeDayOfYear() throws Exception {
+        MonthAndDay mad = new MonthAndDay(3, 16);
+        assertEquals(74, mad.computeDayOfYear());
 
+        MonthAndDay mad2 = new MonthAndDay(12, 31);
+        assertEquals(364, mad2.computeDayOfYear());
     }
 
     @org.junit.Test
     public void testComputeMonthAndDayFromDaysAdded() throws Exception {
         MonthAndDay mad = new MonthAndDay(12, 30);
-        assertEquals("Month: 1, Day: 1" ,mad.computeMonthAndDayFromDaysAdded(2).toString());
+        assertEquals("Month: 1, Day: 1", mad.computeMonthAndDayFromDaysAdded(2).toString());
+
+        MonthAndDay mad2 = new MonthAndDay(1, 1);
+        assertEquals("Month: 2, Day: 28", mad2.computeMonthAndDayFromDaysAdded(58).toString());
+
+        MonthAndDay mad3 = new MonthAndDay(1, 1);
+        assertEquals("Month: 1, Day: 1", mad3.computeMonthAndDayFromDaysAdded(365).toString());
+
+        MonthAndDay mad4 = new MonthAndDay(1, 1);
+        assertEquals("Month: 1, Day: 2", mad4.computeMonthAndDayFromDaysAdded(366).toString());
     }
 }

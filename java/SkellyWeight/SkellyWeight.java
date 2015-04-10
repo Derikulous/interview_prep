@@ -4,24 +4,40 @@ package com.derik;
  * A basic weight analyzer that finds the most weight gained in a single week, the most weight lost in a single week, and the standard deviation
  */
 public class SkellyWeight {
-    public static final int[] WEIGHTS = new int[]{115, 120, 135, 140, 143, 142, 145, 146, 148, 148, 142, 135, 115, 95};
+//    public static final int[] WEIGHTS = new int[]{115, 120, 135, 140, 143, 142, 145, 146, 148, 148, 142, 135, 115, 95};
+
+    private int[] weights;
+
+    public SkellyWeight(int[] weights){
+        this.weights = weights;
+    }
 
     /**
      * A method that calculates the maximum weight gained from a week to week comparison
      * @return mostWeightGained
      */
     public int computeMaxWeightGain(){
-        int mostWeightGained = WEIGHTS[1] - WEIGHTS[0];
+        if (weights.length == 1){
+            System.out.println("You only have 1 week of results. Add more to determine weight gained.");
+            return weights[0];
+        }
 
-        for (int i = 0; i < WEIGHTS.length; i++) {
-            if(i+1 != WEIGHTS.length){
-                int weightComparison = WEIGHTS[i+1] - WEIGHTS[i];
+        int mostWeightGained = weights[1] - weights[0];
 
-                if(weightComparison > mostWeightGained){
-                    mostWeightGained = weightComparison;
-                }
+        for (int i = 0; i < weights.length-1; i++) {
+            int weightComparison = weights[i+1] - weights[i];
+
+            if (weightComparison > mostWeightGained){
+                mostWeightGained = weightComparison;
             }
         }
+
+        if (mostWeightGained <=0){
+            System.out.println("You did not gain any weight. Congrats, you only lost weight!");
+            return -1;
+        }
+
+        System.out.println("The most weight gained in one week is " + mostWeightGained + " lbs.");
         return mostWeightGained;
     }
 
@@ -30,23 +46,33 @@ public class SkellyWeight {
      * @return mostWeightLost
      */
     public int computeMaxWeightLoss(){
-        int mostWeightLost = WEIGHTS[0] - WEIGHTS[1];
+        if (weights.length == 1){
+            System.out.println("You didn't lose any weight because you only have 1 week of results.");
+            return weights[0];
+        }
 
-        for (int i = 0; i < WEIGHTS.length; i++) {
-            if(i+1 != WEIGHTS.length){
-                int weightComparison = WEIGHTS[i] - WEIGHTS[i+1];
+        int mostWeightLost = weights[0] - weights[1];
 
-                if(weightComparison > mostWeightLost){
-                    mostWeightLost = weightComparison;
-                }
+        for (int i = 0; i < weights.length-1; i++) {
+            int weightComparison = weights[i] - weights[i+1];
+
+            if (weightComparison > mostWeightLost){
+                mostWeightLost = weightComparison;
             }
         }
+
+        if (mostWeightLost <= 0){
+            System.out.println("You did not lose any weight. Congrats, you only gained weight!");
+            return -1;
+        }
+
+        System.out.println("The most weight lost in one week is " + mostWeightLost + " lbs.");
         return mostWeightLost;
     }
 
     public int getSumOfWeightArray(){
         int sum = 0;
-        for(int num : WEIGHTS){
+        for (int num : weights){
             sum += num;
         }
         return sum;
@@ -55,19 +81,19 @@ public class SkellyWeight {
     /**
      * Variance is defined as the spread of the numbers in a particular set.
      * To calculate this, we take the difference of each number from the mean, then square the absolute value from the result.
-     * The result is then a sum of all the squared values. Variance is calculated by dividing the result from the number of elements in the set.
+     * The result is then a sum of all the squared values divided by the number of elements in the set.
      * @return variance
      */
     public int getVariance(){
-        int mean = getSumOfWeightArray() / WEIGHTS.length;
+        int mean = getSumOfWeightArray() / weights.length;
         int result = 0;
 
-        for (int num : WEIGHTS){
+        for (int num : weights){
             int difference = num - mean;
             int square = (int) Math.pow(difference, 2);
             result += square;
         }
-        int variance = result / WEIGHTS.length;
+        int variance = result / weights.length;
         return variance;
     }
 

@@ -11,9 +11,9 @@ public class Prominence {
         int prominence = 0;
         int key_col = landscape[0];
 
-        for (int i = 0; i < landscape.length; i++) {
-            if (landscape[i] < key_col){
-                key_col = landscape[i];
+        for (int num : landscape){
+            if (num < key_col){
+                key_col = num;
             }
         }
         prominence = location - key_col;

@@ -16,6 +16,12 @@ public class Divisible {
                 if (list.get(i).equals(list.get(j))){
                     j++;
                 }
+
+                if (j >= list.size()){
+                    System.out.println("This set of numbers does not contain any that are evenly divisible by each other.");
+                    return false;
+                }
+
                 int comparisonDivisor = list.get(j);
                 int modulation = currentDividend % comparisonDivisor;
 

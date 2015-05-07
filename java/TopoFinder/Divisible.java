@@ -13,11 +13,11 @@ public class Divisible {
             int currentDividend = list.get(i);
 
             for (int j = 0; j < list.size(); j++) {
-                if (list.get(i).equals(list.get(j))){
+                if (list.get(i).equals(list.get(j))) {
                     j++;
                 }
 
-                if (j >= list.size()){
+                if (j >= list.size()) {
                     System.out.println("This set of numbers does not contain any that are evenly divisible by each other.");
                     return false;
                 }

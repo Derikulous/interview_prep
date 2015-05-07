@@ -23,7 +23,7 @@ public class SkellyWeightTest {
     }
 
     @org.junit.Test
-    public void testComputeStndardDeviation() throws Exception {
+    public void testComputeStandardDeviation() throws Exception {
         SkellyWeight skel = new SkellyWeight(new int[]{115, 120, 135, 140, 143, 142, 145, 146, 148, 148, 142, 135, 115, 95});
         assertEquals(15, skel.computeStandardDeviation());
     }

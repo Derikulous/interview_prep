@@ -9,7 +9,7 @@ public class IncreasingSequence {
      * @param sequence an array of integers
      * @return true if the sequence is incrementally increased by 1 in the array
      */
-    public boolean isIncreasingSequence(int[] sequence){
+    public boolean isIncreasingSequence(int[] sequence) {
         for (int i = 0; i < sequence.length - 1; i++) {
             int valueOfNextNumberInSequence = sequence[i+1];
             int currentIndexValue = sequence[i];

@@ -21,8 +21,8 @@ public class Main {
         Divisible newDiv = new Divisible();
 
         ArrayList<Integer> seq = new ArrayList<Integer>();
-        seq.add(3);
         seq.add(4);
+        seq.add(2);
         seq.add(7);
 
         ArrayList<Integer> seq1 = new ArrayList<Integer>();
@@ -30,12 +30,19 @@ public class Main {
         seq1.add(4);
         seq1.add(7);
 
-        newDiv.isNonDivisible(seq); //should return false
-        newDiv.isNonDivisible(seq1); //should return true
+        newDiv.isNonDivisible(seq);
+        newDiv.isNonDivisible(seq1);
 
         //Prominence finder
         Prominence newProm = new Prominence();
-        int[] landscape = {3, 2, 4, 5, 6, 4, 6};
-        newProm.getProminence(4, landscape);
+        int[] landscape = {3, 8, 7, 4, 6, 9, 8, 9, 11, 2};
+        int[] landscape2 = {5, 3, 1, 6, 2, 7, 4, 3, 9};
+        int[] landscape3 = {5, 3, 1, 2, 8, 4, 3, 9};
+        int[] landscape4 = {5, 3, 2, 3, 2, 1, 3, 9};
+        newProm.getProminence(8, landscape);
+        newProm.getProminence(7, landscape2);
+        newProm.getProminence(8, landscape3);
+        newProm.getProminence(3, landscape4);
+        newProm.getProminence(5, landscape4);
     }
 }

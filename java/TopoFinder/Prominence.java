@@ -1,7 +1,5 @@
 package com.derik;
 
-import java.util.Arrays;
-
 public class Prominence {
     /**
      * Find the 1D topographical prominence. The prominence is the difference between the elevation of the peak and the elevation of the key col.
@@ -10,51 +8,68 @@ public class Prominence {
      * @return an integer that represents the prominence of the location
      */
     public int getProminence(int location, int[] landscape){
-        // throw exception if the location value doesn't exist in the peak array
-        int loc = Arrays.binarySearch(landscape, location);
+        int prominence = 0;
+        int key_col = 0;
+        int right_col = 0;
+        int left_col = 0;
+        int indexInLocation = -1; //assume that the location is not a peak
 
-        if (loc == -1) {
-            System.out.println("That peak value does not exist.");
-            return location;
+        if (location <= 0) {
+            throw new IllegalArgumentException("The location cannot be at sea level or below. Choose a different location.");
         }
 
-        int prominence = 0;
-        int key_col = landscape[0];
-
-        for (int num : landscape) {
-            if (num < key_col){
-                key_col = num;
+        for (int i = 0; i < landscape.length; i++) {
+            if(landscape[i] == location){
+                if (i == 0 || i == landscape.length - 1){
+                    throw new IllegalArgumentException("The location you chose is at the edge of the landscape. Choose a different location.");
+                } else if (landscape[i - 1] < landscape[i] && landscape[i + 1] < landscape[i]) {
+                    indexInLocation = i;
+                    break;
+                }
             }
         }
-        prominence = location - key_col;
+
+        if (indexInLocation == -1) {
+            throw new IllegalArgumentException("The location you chose is not a peak in this landscape. Choose a different location.");
+        }
+
+        for (int i = 0; i < landscape.length; i++) {
+            if(landscape[i] == location) {
+                if(landscape[i - 1] < landscape[i] && landscape[i + 1] < landscape[i]) {
+
+                    for (int j = i + 1; j < landscape.length; j++) {
+                        if (landscape[j] > landscape[j - 1]) {
+                            right_col = landscape[j - 1];
+                            break;
+                        } else if (j == landscape.length - 1) {
+                            System.out.println("The right col is at the boundary. It may or may not be a true col.");
+                            right_col = landscape[j];
+                            break;
+                        }
+                    }
+
+                    for (int k = i - 1; k > -1; k--) {
+                        if (k == 0 && landscape[k] < landscape[k+1]) {
+                            left_col = landscape[k];
+                            System.out.println("The left col is at the boundary. It may or may not be a true col.");
+                            break;
+                        } else if(landscape[k - 1] > landscape[k]) {
+                            left_col = landscape[k];
+                            break;
+                        }
+                    }
+
+                    if (right_col > left_col) {
+                        key_col = right_col;
+                    } else {
+                        key_col = left_col;
+                    }
+                }
+                prominence = location - key_col;
+            }
+        }
+
         System.out.println("The prominence of this mountain range is " + prominence);
         return prominence;
-    }
-
-    public int getMaximumProminence(int[] landscape){
-        int lowestValueIndex = 0;
-        int highestValueIndex = 0;
-        int firstValue = landscape[0];
-
-        // get highest index value
-        for (int i = 0; i < landscape.length; i++) {
-            int comparisonValue = landscape[i];
-            if (comparisonValue > firstValue) {
-                firstValue = comparisonValue;
-                highestValueIndex = i;
-            }
-        }
-
-        for (int j = 0; j < landscape.length; j++) {
-            int comparisonValue = landscape[j];
-            if (comparisonValue < firstValue) {
-                lowestValueIndex = j;
-                firstValue = comparisonValue;
-            }
-        }
-
-        int maxProminence = landscape[highestValueIndex] - landscape[lowestValueIndex];
-        System.out.println("The maximum prominence of this mountain range is " + maxProminence);
-        return maxProminence;
     }
 }

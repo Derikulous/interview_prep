@@ -21,4 +21,17 @@ public class IncreasingSequence {
         System.out.println("This in an incrementally increasing sequence.");
         return true;
     }
+
+    public boolean isIncreasingSequenceAlternative(int[] sequence) {
+        int expected = sequence[0];
+        for (int i = 0; i < sequence.length; i++) {
+            if (expected != sequence[i]) {
+                return false;
+            }
+
+            expected++;
+        }
+        System.out.println("This in an incrementally increasing sequence.");
+        return true;
+    }
 }

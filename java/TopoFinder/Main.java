@@ -39,10 +39,15 @@ public class Main {
         int[] landscape2 = {5, 3, 1, 6, 2, 7, 4, 3, 9};
         int[] landscape3 = {5, 3, 1, 2, 8, 4, 3, 9};
         int[] landscape4 = {5, 3, 2, 3, 2, 1, 3, 9};
+        int[] landscape5 = {3, 1, 4, 6, 3, 2, 8, 2, 1, 2};
+        int[] landscape6 = {2, 3, 5, 3, 1, 6, 4, 5, 11, 2};
+
         newProm.getProminence(8, landscape);
         newProm.getProminence(7, landscape2);
         newProm.getProminence(8, landscape3);
         newProm.getProminence(3, landscape4);
-        newProm.getProminence(5, landscape4);
+
+        newProm.getMaximumProminence(landscape5);
+        newProm.getMaximumProminence(landscape6);
     }
 }

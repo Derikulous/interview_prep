@@ -102,4 +102,30 @@ public class Prominence {
         System.out.println("The prominence of this mountain range is " + prominence);
         return prominence;
     }
+
+    /**
+     * Find the maximum prominence in a given landscape in O(N^2).
+     * @param landscape
+     * @return the maximum prominence
+     */
+    public int getMaximumProminence(int[] landscape){
+        int maxProminence = 0;
+
+        // begin the searching for maximum prominence at index 1 and never ending at the final index since prominence cannot occur at the edge
+        for (int i = 1; i < landscape.length - 1; i++) {
+
+            try {
+                int currentProminence = getProminence(landscape[i], landscape);
+
+                if(currentProminence > maxProminence) {
+                    maxProminence = currentProminence;
+                }
+            } catch (IllegalArgumentException e) {
+                System.err.println("IllegalArgumentException: " + e.getMessage());
+            }
+
+        }
+        System.out.println("The maximum prominence of this mountain range is " + maxProminence);
+        return maxProminence;
+    }
 }

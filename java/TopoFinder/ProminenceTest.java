@@ -47,4 +47,11 @@ public class ProminenceTest {
         int[] landscape = {2, 3, 5, 3, 1, 6, 4, 5, 11, 2};
         assertEquals(3, promCheck.getProminence(5, landscape));
     }
+
+    @org.junit.Test
+    public void testGetMaximumProminence() throws Exception {
+        Prominence promCheck = new Prominence();
+        int[] landscape = {2, 3, 5, 3, 1, 6, 4, 5, 11, 2};
+        assertEquals(7, promCheck.getMaximumProminence(landscape));
+    }
 }
